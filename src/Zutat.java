@@ -1,4 +1,4 @@
-public class Zutat {
+public class Zutat implements Verkaufspreis {
 
     // Nach Erzeugng in DB und vor Erzeugung schauen, ob schon enthalten
 
@@ -28,4 +28,13 @@ public class Zutat {
         this.preis = preis;
     }
 
+    @Override
+    public double getZutatenPreis() {
+        return preis;
+    }
+
+    @Override
+    public double getZubereitungsPreis() {
+        return 0.75;
+    }
 }

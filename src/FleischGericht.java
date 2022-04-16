@@ -1,4 +1,4 @@
-public class FleischGericht extends BasisRezeptEssen {
+public class FleischGericht extends BasisRezeptEssen implements Verkaufspreis {
 
     private String fleischsorte;
     private int zielKerntemperatur;
@@ -43,4 +43,20 @@ public class FleischGericht extends BasisRezeptEssen {
         this.zubereitungstemperatur = zubereitungstemperatur;
     }
 
+    @Override
+    public double getZutatenPreis() {
+
+        double preis = 0.00;
+        for (int i = 0; i < getZutaten().length; i++){
+
+            preis = preis + getZutaten()[i].getPreis();
+
+        }
+        return preis;
+    }
+
+    @Override
+    public double getZubereitungsPreis() {
+        return 8.00;
+    }
 }

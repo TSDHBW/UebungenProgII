@@ -1,4 +1,4 @@
-public class PastaGericht extends BasisRezeptEssen {
+public class PastaGericht extends BasisRezeptEssen implements Verkaufspreis {
 
     private String nudelsorte;
     private boolean vorspeise;
@@ -34,4 +34,20 @@ public class PastaGericht extends BasisRezeptEssen {
         this.vorspeise = vorspeise;
     }
 
+    @Override
+    public double getZutatenPreis() {
+
+        double preis = 0.00;
+        for (int i = 0; i < getZutaten().length; i++){
+
+            preis = preis + getZutaten()[i].getPreis();
+
+        }
+        return preis;
+    }
+
+    @Override
+    public double getZubereitungsPreis() {
+        return 5.00;
+    }
 }

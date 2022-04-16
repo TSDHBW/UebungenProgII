@@ -22,11 +22,16 @@ public class MVCController {
         Zutat limette = legeZutatan("Limette", 1.00);
         Zutat zucker = legeZutatan("Zucker", 2.50);
         Zutat[] zutaten = {limette, zucker};
-        Cocktail caipirinha = new Cocktail("Caipirinha", zutaten, true, true, 2, false);
+        Cocktail caipirinha = new Cocktail("Caipirinha", zutaten, true, false, 2, false);
+        Limonade zitronenlimo = new Limonade("Zitronenlimo", zutaten, false, false, "Limette", true);
         model.rezeptverwaltung.nehmeRezeptAuf(caipirinha);
+        model.rezeptverwaltung.nehmeRezeptAuf(zitronenlimo);
         Cocktail cocktail = (Cocktail)model.rezeptverwaltung.getRezept("Caipirinha", "Cocktail");
         System.out.println(cocktail.getName());
         aktualisiereRezept(cocktail);
+        werteRezeptverwaltungAus();
+        berechneVerkaufspreis(caipirinha);
+        berechneVerkaufspreis(limette);
 
     }
 
@@ -47,6 +52,26 @@ public class MVCController {
         return zutat;
 
     }
+
+    public void werteRezeptverwaltungAus (){
+
+        System.out.println(model.rezeptverwaltung.ermittleAnzahlRezepte());
+        System.out.println(model.rezeptverwaltung.ermittleAnzahlRezepte("Cocktail"));
+        System.out.println(model.rezeptverwaltung.ermittleAnzahlRezepte("Limonade"));
+
+    }
+
+    public void berechneVerkaufspreis (Verkaufspreis parameter){
+
+        double preis = 0.00;
+        preis += parameter.BASISPREIS;
+        preis += parameter.getZubereitungsPreis();
+        preis += parameter.getZutatenPreis();
+        System.out.println(preis);
+
+    }
+
+
 
 
 }

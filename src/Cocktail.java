@@ -1,4 +1,4 @@
-public class Cocktail extends BasisRezeptGetraenk {
+public class Cocktail extends BasisRezeptGetraenk implements Verkaufspreis {
 
     private int alkohlgehalt;
     private boolean alkohlfrei;
@@ -33,4 +33,20 @@ public class Cocktail extends BasisRezeptGetraenk {
         this.alkohlfrei = alkohlfrei;
     }
 
+    @Override
+    public double getZutatenPreis() {
+
+        double preis = 0.00;
+        for (int i = 0; i < getZutaten().length; i++){
+
+            preis = preis + getZutaten()[i].getPreis();
+
+        }
+        return preis;
+    }
+
+    @Override
+    public double getZubereitungsPreis() {
+        return 3.00;
+    }
 }

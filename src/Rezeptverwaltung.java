@@ -34,6 +34,12 @@ public class Rezeptverwaltung {
 
     }
 
+    public int ermittleAnzahlRezepte (){
+
+        return index;
+
+    }
+
     public void zeigeRezetAn (String art, String name){
 
     }
