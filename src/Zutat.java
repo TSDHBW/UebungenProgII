@@ -1,5 +1,7 @@
 public class Zutat {
 
+    // Nach Erzeugng in DB und vor Erzeugung schauen, ob schon enthalten
+
     private String name;
     private double preis;
 

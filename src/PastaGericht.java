@@ -3,9 +3,10 @@ public class PastaGericht extends BasisRezeptEssen {
     private String nudelsorte;
     private boolean vorspeise;
 
-    public PastaGericht (String name, Zutat[]zutaten, boolean vegetarisch, boolean vegan, String nudelsorte, boolean vorspeise){
+    public PastaGericht (String name, Zutat[]zutaten, boolean vegetarisch, boolean vegan, String nudelsorte,
+                         boolean vorspeise){
 
-        super(name, zutaten, vegetarisch, vegan);
+        super(name, zutaten, vegetarisch, vegan, "PastaGericht");
         this.nudelsorte = nudelsorte;
         this.vorspeise = vorspeise;
 

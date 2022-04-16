@@ -5,11 +5,9 @@ public class Kundenverwaltung {
 
     /**
      * Konstruktor fuer ein Objekt der Klasse Kundenverwaltung. Der Index wird zum Zeitpunkt der Erzeugung auf 1 gesetzt.
-     * @param kunden Uebergabe eines Arrays mit Kunden
      */
-    public Kundenverwaltung (Kunde[]kunden){
+    public Kundenverwaltung (){
 
-        this.kunden = kunden;
         index = 1;
 
     }

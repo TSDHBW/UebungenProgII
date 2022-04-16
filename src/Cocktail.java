@@ -5,7 +5,7 @@ public class Cocktail extends BasisRezeptGetraenk {
 
     public Cocktail(String name, Zutat[]zutaten, boolean heißGetraenk, boolean zuckerfrei, int alkohlgehalt, boolean alkohlfrei){
 
-        super(name, zutaten, heißGetraenk, zuckerfrei);
+        super(name, zutaten, heißGetraenk, zuckerfrei, "Cocktail");
         this.alkohlgehalt = alkohlgehalt;
         this.alkohlfrei = alkohlfrei;
 
@@ -25,7 +25,7 @@ public class Cocktail extends BasisRezeptGetraenk {
         this.alkohlgehalt = alkohlgehalt;
     }
 
-    public boolean isAlkohlfrei() {
+    public boolean getAlkohlfrei() {
         return alkohlfrei;
     }
 
