@@ -39,6 +39,19 @@
 
     }
 
+    public void loescheZutat (String name) {
+
+        for (int i = 0; i < index; i++){
+
+            if (zutaten[i].getName().equals(name)){
+
+                zutaten[i] = null;
+                System.out.println("Zutat " + name + " wurde gelöscht");
+
+            }
+        }
+    }
+
     /**
      * Methode zur Aufnahme einer neuen Zutat in die Zutatenverwaltung. Die Methode prüft zuerst, ob eine Zutat mit
      * gleichem Namen bereits in der Zutatenverwaltung existiert. Falls ja, wird die Zutat aktualisiert. Falls nein,
@@ -51,7 +64,14 @@
 
         boolean anfrageAusgefuert = false;
         for (int i = 0; i < index; i++){
-            if (zutaten[i].getName().equals(zutat.getName())){
+
+            /* Prüfung, ob aktuelle Indexposition des Array mit einem Objekt belegt ist und der Namen der Zutat
+             * im Array dem Namen der übergebenen Zutat entspricht
+             * && bedeutet, dass nach einer fehlerhaften ersten Bedingung, die zweite nicht geprüft wird
+             * Falls zutaten[i].getName() bei einer Position ohne Objekt angewendet wird, entsteht eine Exception
+             */
+
+            if (zutaten[i] != null && zutaten[i].getName().equals(zutat.getName())){
                 zutaten[i] = zutat;
                 anfrageAusgefuert = true;
             }
@@ -59,6 +79,34 @@
         if (anfrageAusgefuert){
             System.out.println("Zutat " + zutat.getName() + " aktualisiert");
         } else {
+
+            // Durchlaufen des gesamten Arrays, da der Index beim ersten Rezept 0 ist und dadurch die Schleife
+            // nie starten würde. Alternativ kann eine separate Behandlung des ersten Falls verwendet werden
+            for (int i = 0; i <= zutaten.length; i++){
+
+                // Prüfung, ob aktuelle Indexposition des Array nicht keinem Objekt belegt ist
+                if (zutaten[i] == null) {
+
+                    zutaten[i] = zutat;
+
+                    // Index wird nur erhöht, falls kein Lücke im Array gefüllt wird
+                    if (i > index){
+                        index++;
+                    }
+
+                    System.out.println("Rezept " + zutat.getName() + " neu aufgenommen");
+                    anfrageAusgefuert = true;
+                    break;
+
+                }
+
+            }
+
+            if (!anfrageAusgefuert){
+
+                System.out.println("Die Zutatenverwaltung ist voll");
+
+            }
 
             if (index < 99) {
 

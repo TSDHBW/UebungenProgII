@@ -10,6 +10,10 @@ public class Rezeptverwaltung {
     private BasisRezept[] rezepte;
     private int index;
 
+    public int getIndex() {
+        return index;
+    }
+
     public Rezeptverwaltung (){
 
         rezepte = new BasisRezept[4000];
@@ -40,7 +44,20 @@ public class Rezeptverwaltung {
 
     }
 
-    public void zeigeRezetAn (String art, String name){
+    public void loescheRezept (String typ, String name) {
+
+        for (int i = 0; i < index; i++){
+
+            if (rezepte[i].getName().equals(name) && rezepte[i].getTyp().equals(typ)){
+
+                rezepte[i] = null;
+                System.out.println("Rezept " + name + " wurde gelöscht");
+
+            }
+        }
+    }
+
+    public void zeigeRezeptAn (String typ, String name){
 
     }
 
@@ -64,7 +81,7 @@ public class Rezeptverwaltung {
 
     }
 
-    public BasisRezept[] getRezeptete() {
+    public BasisRezept[] getRezepte() {
         return rezepte;
     }
 
@@ -85,7 +102,12 @@ public class Rezeptverwaltung {
         boolean anfrageAusgefuert = false;
         for (int i = 0; i < index; i++){
 
-            if (rezepte[i].getName().equals(rezept.getName())){
+            /* Prüfung, ob aktuelle Indexposition des Array mit einem Objekt belegt ist und der Namen des Rezepts
+            * im Array dem Namen des übergebenen Rezepts entspricht
+            * && bedeutet, dass nach einer fehlerhaften ersten Bedingung, die zweite nicht geprüft wird
+            * Falls rezepte[i].getName() bei einer Position ohne Objekt angewendet wird, entsteht eine Exception
+            */
+            if (rezepte[i] != null && rezepte[i].getName().equals(rezept.getName())){
                 rezepte[i] = rezept;
                 anfrageAusgefuert = true;
             }
@@ -94,16 +116,31 @@ public class Rezeptverwaltung {
             System.out.println("Rezept " + rezept.getName() + " aktualisiert");
         } else {
 
-            if (index < 3999) {
+            // Durchlaufen des gesamten Arrays, da der Index beim ersten Rezept 0 ist und dadurch die Schleife
+            // nie starten würde. Alternativ kann eine separate Behandlung des ersten Falls verwendet werden
+            for (int i = 0; i <= rezepte.length; i++){
 
-                rezepte[index] = rezept;
-                index++;
-                System.out.println("Rezept " + rezept.getName() + " neu aufgenommen");
-                anfrageAusgefuert = true;
+                // Prüfung, ob aktuelle Indexposition des Array nicht keinem Objekt belegt ist
+                if (rezepte[i] == null) {
 
-            } else {
+                    rezepte[i] = rezept;
 
-                System.out.println("Zutatenverwaltung ist voll");
+                    // Index wird nur erhöht, falls kein Lücke im Array gefüllt wird
+                    if (i > index){
+                        index++;
+                    }
+
+                    System.out.println("Rezept " + rezept.getName() + " neu aufgenommen");
+                    anfrageAusgefuert = true;
+                    break;
+
+                }
+
+            }
+
+            if (!anfrageAusgefuert){
+
+                System.out.println("Die Rezeptverwaltung ist voll");
 
             }
 

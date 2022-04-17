@@ -15,6 +15,8 @@ public class MVCController {
         //Erzeugung des Datenmodells durch ein Objekt der Klasse MVCModel
         this.model = new MVCModel();
         legeRezeptAn();
+        loescheRezept("Cocktail", "Caipirinha");
+        löscheZutat ("limette");
     }
 
     public void legeRezeptAn (){
@@ -68,6 +70,38 @@ public class MVCController {
         preis += parameter.getZubereitungsPreis();
         preis += parameter.getZutatenPreis();
         System.out.println(preis);
+
+    }
+
+    public void loescheRezept (String typ, String name){
+
+        BasisRezept[] rezepte = model.rezeptverwaltung.getRezepte();
+        System.out.println(rezepte[0].getName());
+        System.out.println(rezepte[1].getName());
+        model.rezeptverwaltung.loescheRezept(typ, name);
+        Zutat orange = legeZutatan("Orange", 1.00);
+        Zutat zucker = legeZutatan("Zucker", 2.50);
+        Zutat[] zutaten = {orange, zucker};
+        Limonade OrganenLimo = new Limonade("OrganenLimo", zutaten, false, false, "Orange", true);
+        model.rezeptverwaltung.nehmeRezeptAuf(OrganenLimo);
+        rezepte = model.rezeptverwaltung.getRezepte();
+        System.out.println(rezepte[0].getName());
+        System.out.println(rezepte[1].getName());
+        System.out.println(model.rezeptverwaltung.getIndex());
+
+    }
+
+    public void löscheZutat (String name){
+
+        Zutat[] zutaten = model.zutatenverwaltung.getZutaten();
+        System.out.println(zutaten[0].getName());
+        System.out.println(zutaten[1].getName());
+        System.out.println(zutaten[2].getName());
+        model.zutatenverwaltung.loescheZutat(name);
+        Zutat limette = legeZutatan("Limette", 1.00);
+        System.out.println(zutaten[0].getName());
+        System.out.println(zutaten[1].getName());
+        System.out.println(zutaten[2].getName());
 
     }
 
