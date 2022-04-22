@@ -120,12 +120,12 @@ public class Rezeptverwaltung {
             // nie starten würde. Alternativ kann eine separate Behandlung des ersten Falls verwendet werden
             for (int i = 0; i <= rezepte.length; i++){
 
-                // Prüfung, ob aktuelle Indexposition des Array nicht keinem Objekt belegt ist
+                // Prüfung, ob aktuelle Indexposition des Array mit keinem Objekt belegt ist
                 if (rezepte[i] == null) {
 
                     rezepte[i] = rezept;
 
-                    // Index wird nur erhöht, falls kein Lücke im Array gefüllt wird
+                    // Index wird nur erhöht, falls keine Lücke im Array gefüllt wird
                     if (i > index){
                         index++;
                     }
