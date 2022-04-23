@@ -15,6 +15,10 @@
 
     }
 
+    public int getIndex() {
+        return index;
+    }
+
     public Zutat[] getZutaten() {
         return zutaten;
     }
@@ -90,11 +94,11 @@
                     zutaten[i] = zutat;
 
                     // Index wird nur erhöht, falls kein Lücke im Array gefüllt wird
-                    if (i > index){
+                    if (i >= index){
                         index++;
                     }
 
-                    System.out.println("Rezept " + zutat.getName() + " neu aufgenommen");
+                    System.out.println("Zutat " + zutat.getName() + " neu aufgenommen");
                     anfrageAusgefuert = true;
                     break;
 
@@ -108,18 +112,6 @@
 
             }
 
-            if (index < 99) {
-
-                zutaten[index] = zutat;
-                index++;
-                System.out.println("Zutat " + zutat.getName() + " neu aufgenommen");
-                anfrageAusgefuert = true;
-
-            } else {
-
-                System.out.println("Die Zutatenverwaltung ist voll");
-
-            }
         }
      return anfrageAusgefuert;
     }

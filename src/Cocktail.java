@@ -11,6 +11,10 @@ public class Cocktail extends BasisRezeptGetraenk implements Verkaufspreis {
 
     }
 
+    public boolean isAlkohlfrei() {
+        return alkohlfrei;
+    }
+
     public String glasMitKundeAbstimmen() {
 
         return "";

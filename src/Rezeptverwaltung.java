@@ -125,8 +125,8 @@ public class Rezeptverwaltung {
 
                     rezepte[i] = rezept;
 
-                    // Index wird nur erhöht, falls kein Lücke im Array gefüllt wird
-                    if (i > index){
+                    // Index wird nur erhöht, falls keine Lücke im Array gefüllt wird
+                    if (i >= index){
                         index++;
                     }
 

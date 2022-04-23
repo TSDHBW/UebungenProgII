@@ -17,6 +17,9 @@ public class MVCController {
         legeRezeptAn();
         loescheRezept("Cocktail", "Caipirinha");
         löscheZutat ("limette");
+        model.einlesen();
+        model.speichern();
+
     }
 
     public void legeRezeptAn (){
@@ -34,6 +37,8 @@ public class MVCController {
         werteRezeptverwaltungAus();
         berechneVerkaufspreis(caipirinha);
         berechneVerkaufspreis(limette);
+
+
 
     }
 
