@@ -1,0 +1,3 @@
+Limette;1.0
+Zucker;2.5
+Orange;1.0
