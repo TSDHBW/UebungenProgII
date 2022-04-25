@@ -17,9 +17,8 @@ public class MVCController {
         legeRezeptAn();
         loescheRezept("Cocktail", "Caipirinha");
         löscheZutat ("limette");
-        model.einlesen();
+        //model.einlesen();
         model.speichern();
-
     }
 
     public void legeRezeptAn (){
@@ -32,13 +31,10 @@ public class MVCController {
         model.rezeptverwaltung.nehmeRezeptAuf(caipirinha);
         model.rezeptverwaltung.nehmeRezeptAuf(zitronenlimo);
         Cocktail cocktail = (Cocktail)model.rezeptverwaltung.getRezept("Caipirinha", "Cocktail");
-        System.out.println(cocktail.getName());
         aktualisiereRezept(cocktail);
-        werteRezeptverwaltungAus();
-        berechneVerkaufspreis(caipirinha);
-        berechneVerkaufspreis(limette);
-
-
+        //werteRezeptverwaltungAus();
+        //berechneVerkaufspreis(caipirinha);
+        //berechneVerkaufspreis(limette);
 
     }
 
@@ -48,7 +44,6 @@ public class MVCController {
         cocktail.setAlkohlfrei(true);
         model.rezeptverwaltung.nehmeRezeptAuf(cocktail);
         Cocktail caipirinha = (Cocktail)model.rezeptverwaltung.getRezept("Caipirinha", "Cocktail");
-        System.out.println(caipirinha.getAlkohlfrei());
 
     }
 
@@ -80,37 +75,20 @@ public class MVCController {
 
     public void loescheRezept (String typ, String name){
 
-        BasisRezept[] rezepte = model.rezeptverwaltung.getRezepte();
-        System.out.println(rezepte[0].getName());
-        System.out.println(rezepte[1].getName());
         model.rezeptverwaltung.loescheRezept(typ, name);
         Zutat orange = legeZutatan("Orange", 1.00);
         Zutat zucker = legeZutatan("Zucker", 2.50);
         Zutat[] zutaten = {orange, zucker};
         Limonade OrganenLimo = new Limonade("OrganenLimo", zutaten, false, false, "Orange", true);
         model.rezeptverwaltung.nehmeRezeptAuf(OrganenLimo);
-        rezepte = model.rezeptverwaltung.getRezepte();
-        System.out.println(rezepte[0].getName());
-        System.out.println(rezepte[1].getName());
-        System.out.println(model.rezeptverwaltung.getIndex());
 
     }
 
     public void löscheZutat (String name){
 
         Zutat[] zutaten = model.zutatenverwaltung.getZutaten();
-        System.out.println(zutaten[0].getName());
-        System.out.println(zutaten[1].getName());
-        System.out.println(zutaten[2].getName());
         model.zutatenverwaltung.loescheZutat(name);
         Zutat limette = legeZutatan("Limette", 1.00);
-        System.out.println(zutaten[0].getName());
-        System.out.println(zutaten[1].getName());
-        System.out.println(zutaten[2].getName());
 
     }
-
-
-
-
 }

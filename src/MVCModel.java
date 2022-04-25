@@ -58,7 +58,7 @@ public class MVCModel {
             String rezept="";
             String zutaten="";
 
-            for (int i = 0; i < rezeptverwaltung.getIndex(); i++){
+            for (int i = 0; i < rezeptverwaltung.getIndex() + 1; i++){
 
                 // Falls eine Arrayposition durch Löschen eines Rezepts leer ist, wird diese bei der Speicherung übersprungen
                 if (rezeptverwaltung.getRezepte()[i] != null){
@@ -70,24 +70,21 @@ public class MVCModel {
                             rezept = cocktail.getName() + ";" + cocktail.isHeißGetraenk() + ";"
                                     + cocktail.isZuckerfrei() + ";" + cocktail.getAlkohlgehalt() + ";" + cocktail.isAlkohlfrei() + ";"
                                     + cocktail.getTyp();
-                            System.out.println(rezeptverwaltung.getRezepte()[i].getName());
-                            System.out.println(rezept);
+                            System.out.println("Cocktail gespeichert: " + rezept);
                             break;
                         case "Limonade":
                             Limonade Limonade = (Limonade)rezeptverwaltung.getRezepte()[i];
                             rezept = Limonade.getName() + ";" + Limonade.isHeißGetraenk() + ";" + Limonade.isZuckerfrei() + ";"
                                     + Limonade.getFruchtgeschmack() + ";" + Limonade.getHerstellungInHouse() + ";"
                                     + Limonade.getTyp();
-                            System.out.println(rezeptverwaltung.getRezepte()[i].getName());
-                            System.out.println(rezept);
+                            System.out.println("Limonade gespeichert " + rezept);
                             break;
                         case "FleischGericht":
                             FleischGericht fleischGericht = (FleischGericht)rezeptverwaltung.getRezepte()[i];
                             rezept = fleischGericht.getName() + ";" + fleischGericht.isVegan() + ";" + fleischGericht.isVegetarisch() + ";"
                                     + fleischGericht.getFleischsorte() + ";" + fleischGericht.getZielKerntemperatur() + ";"
                                     + fleischGericht.getZubereitungstemperatur() + ";" + fleischGericht.getTyp();
-                            System.out.println(rezeptverwaltung.getRezepte()[i].getName());
-                            System.out.println(rezept);
+                            System.out.println("Fleischgericht gespeichert " + rezept);
                             break;
                         case "PastaGericht":
                             PastaGericht pastaGericht = (PastaGericht)rezeptverwaltung.getRezepte()[i];
@@ -95,7 +92,7 @@ public class MVCModel {
                                     + pastaGericht.getNudelsorte() + ";" + pastaGericht.isVorspeise() + ";"
                                     + pastaGericht.getTyp();
                             System.out.println(rezeptverwaltung.getRezepte()[i].getName());
-                            System.out.println(rezept);
+                            System.out.println("Pastagereicht gespeichert " + rezept);
                             break;
                         default:
                             break;
