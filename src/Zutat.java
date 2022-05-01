@@ -1,26 +1,7 @@
-public class Zutat implements Verkaufspreis {
+public class Zutat {
 
     private String name;
     private double preis;
-    private Zutat nextZutat;
-
-    public Zutat getNextZutat() {
-        return nextZutat;
-    }
-
-    public void setNextZutat(Zutat nextZutat) {
-        this.nextZutat = nextZutat;
-    }
-
-    public Zutat getPrevZutat() {
-        return prevZutat;
-    }
-
-    public void setPrevZutat(Zutat prevZutat) {
-        this.prevZutat = prevZutat;
-    }
-
-    private Zutat prevZutat;
 
     public Zutat (String name, double preis){
 
@@ -42,18 +23,4 @@ public class Zutat implements Verkaufspreis {
         this.preis = preis;
     }
 
-    @Override
-    public double getZutatenPreis() {
-        return preis;
-    }
-
-    @Override
-    public double getZubereitungsPreis() {
-        return 0.75;
-    }
-
-    @Override
-    public double getVerkaufspreis() {
-        return preis + 0.75;
-    }
 }

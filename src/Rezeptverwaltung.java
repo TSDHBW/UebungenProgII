@@ -1,10 +1,7 @@
-import java.util.ArrayList;
-import java.util.Iterator;
 
-public class Rezeptverwaltung implements Iterable<BasisRezept> {
+public class Rezeptverwaltung {
 
     private BasisRezept[] rezepte;
-    private ArrayList<BasisRezept> rezeptListe;
     private int index;
 
     public int getIndex() {
@@ -12,7 +9,6 @@ public class Rezeptverwaltung implements Iterable<BasisRezept> {
     }
     public Rezeptverwaltung (){
         rezepte = new BasisRezept[4000];
-        rezeptListe = new ArrayList<>();
         index = 0;
     }
     public int ermittleAnzahlRezepte (String typ){
@@ -82,9 +78,4 @@ public class Rezeptverwaltung implements Iterable<BasisRezept> {
         return anfrageAusgefuert;
     }
 
-    @Override
-    public Iterator<BasisRezept> iterator() {
-
-        return new IteratorRezepte(rezepte);
-    }
 }
