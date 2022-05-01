@@ -1,3 +1,5 @@
+import org.w3c.dom.Node;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -5,12 +7,16 @@ public class Zutatenverwaltung implements Iterable<Zutat> {
 
     private Zutat[] zutaten;
     private int index;
-    private ArrayList<Zutat> zutatenliste;
+    private Zutat mTail;
+    private Zutat mHead;
+    private int laengeZutatenliste;
 
     public Zutatenverwaltung (){
         zutaten = new Zutat[100];
-
         index = 0;
+        mTail = null;
+        mHead = null;
+        laengeZutatenliste = 0;
     }
     public int getIndex() {
         return index;
@@ -66,9 +72,27 @@ public class Zutatenverwaltung implements Iterable<Zutat> {
      return anfrageAusgefuert;
     }
 
+    public void addZutat(Zutat zutat)
+    {
+
+        if (laengeZutatenliste==0)
+        {
+            mHead = zutat;
+            mTail = zutat;
+        }else
+        {
+            //System.out.println("Tail vorher: " + mTail.getName());
+            mTail.setNextZutat(zutat);
+            mTail=zutat;
+            //System.out.println("Tail nachher: " + mTail.getName());
+        }
+
+        laengeZutatenliste++;
+    }
+
     @Override
     public Iterator<Zutat> iterator() {
-        return null;
+        return new IteratorZutaten(mHead);
     }
 
 

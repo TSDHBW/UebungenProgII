@@ -5,4 +5,6 @@ public interface Verkaufspreis {
     public abstract double getZutatenPreis ();
     public abstract double getZubereitungsPreis ();
 
+    public abstract double getVerkaufspreis ();
+
 }

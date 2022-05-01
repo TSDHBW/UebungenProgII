@@ -3,21 +3,23 @@ import java.util.Iterator;
 
 public class IteratorZutaten implements Iterator<Zutat> {
 
-    ArrayList<Zutat> mZutatenListe;
+    Zutat mNextZutat;
 
-    public IteratorZutaten (ArrayList<Zutat> aZutatenliste){
+    public IteratorZutaten (Zutat aHead){
 
-        mZutatenListe = aZutatenliste;
+        mNextZutat = aHead;
 
     }
 
     @Override
     public boolean hasNext() {
-        return false;
+        return mNextZutat !=null;
     }
 
     @Override
     public Zutat next() {
-        return null;
+        Zutat zutat = mNextZutat;
+        mNextZutat = mNextZutat.getNextZutat();
+        return zutat;
     }
 }
