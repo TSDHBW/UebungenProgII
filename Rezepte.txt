@@ -1,4 +1,0 @@
-OrganenLimo;false;false;Orange;true;Limonade
-Orange;Zucker;
-Zitronenlimo;false;false;Limette;true;Limonade
-Limette;Zucker;
