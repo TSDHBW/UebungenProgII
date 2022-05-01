@@ -1,9 +1,9 @@
 public class Zutat implements Verkaufspreis {
 
-    // Nach Erzeugng in DB und vor Erzeugung schauen, ob schon enthalten
-
     private String name;
     private double preis;
+    private Zutat nextZutat;
+    private Zutat prevZutat;
 
     public Zutat (String name, double preis){
 
@@ -15,15 +15,12 @@ public class Zutat implements Verkaufspreis {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public double getPreis() {
         return preis;
     }
-
     public void setPreis(double preis) {
         this.preis = preis;
     }
